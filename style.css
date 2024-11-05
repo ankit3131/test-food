@@ -9,8 +9,12 @@
     --font-family-inter: 'Inter', sans-serif;
 
 }
+html{
+    overflow-x: hidden;
+}
 body{
     color:#fafafa;
+    overflow-x: hidden;
 }
 .logo img:nth-child(1){
     background-color: var(--primary-color);
