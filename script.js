@@ -1,7 +1,8 @@
 $(document).ready(function() {
     // Hamburger menu toggle
+  
     $('.hamburger-menu').click(function() {
-        $('.navigation ul, .right').toggleClass('active');
+        $('.navigation, .right, .fade-left1').toggleClass('active');
     });
 
     // Active class toggle
@@ -44,31 +45,39 @@ $(document).ready(function(){
     });
 });
 
+function openMenu() {
+    document.querySelector(".open_icon").style.display = "none";
+    document.querySelector(".close_icon").style.display = "block";
 
-// $(document).ready(function(){
-//     function initOwlCarousel() {
-//         debugger;
-//         if ($(window).width() < 992) {
-//             if (!$('#slider1').hasClass('owl-loaded')) {
-//             $('#slider1').owlCarousel({
-//                 items: 1,
-//                 loop: true,
-//                 margin: 10,
-//                 nav: true,
-//                 responsive: {
-//                     0: { items: 1 },
-//                     576: { items: 2 },
-//                     768: { items: 3 }
-//                 }
-//             });
-//         }
-//      } else {
-//         $('#slider1').trigger('destroy.owl.carousel'); // Destroy carousel on larger screens
-//         $('#slider1').removeClass('owl-loaded'); // Reset so it can reinitialize if resized to mobile
-//     }
-// }
+}
+function closeMenu() {
+    document.querySelector(".close_icon").style.display = "none";
+    document.querySelector(".open_icon").style.display  = "block";
+}
 
-// // Initialize on load and resize
-// initOwlCarousel();
-// $(window).resize(initOwlCarousel);
-// });
+
+///scrolling use work
+function animateOnScroll() {
+    const animatedElements  = document.querySelectorAll('.fade-left, .fade-right, .zoom-in,.zoom-out ,.fade-in-up, .fade-in-down ,.fade-rotate');
+    console.log(animatedElements);
+animatedElements.forEach(Element => {
+  const rect = Element.getBoundingClientRect();
+  const windowHeight = window.innerHeight || document.documentEelement.clienHeight;
+
+  // Check if the element is in the viewport
+  if(rect.top <= windowHeight && rect.bottom >= 0){
+    Element.classList.add('active');
+  }
+  else{
+    Element.classList.remove('active');
+  }
+})
+    
+  }
+
+  // Add scroll event listener
+  window.addEventListener('scroll' , animateOnScroll);
+
+
+// Initial check in case elements are in view on load
+  animateOnScroll();
